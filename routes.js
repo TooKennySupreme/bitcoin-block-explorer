@@ -102,7 +102,7 @@ module.exports = (app, passport) => {
   });
 
   // block hash page
-  app.get("/blockhash/:hash/:txns", function(req, res, next) {
+  app.get("/blockhash/:hash/:txns", (req, res, next) => {
     var start = parseInt(req.params.txns);
     var end = parseInt(req.params.txns) + 20;
     var numberOfTxns = [start, end];
@@ -134,7 +134,7 @@ module.exports = (app, passport) => {
   });
 
   // transaction id page
-  app.get("/transactionid/:txnid", function(req, res, next) {
+  app.get("/transactionid/:txnid", (req, res, next) => {
     btc.getRawTransaction(req.params.txnid, true).then(result => {
       var totalOutput = 0;
       var outputAddresses = result.vout;
@@ -163,7 +163,7 @@ module.exports = (app, passport) => {
   });
 
   // verify message page
-  app.get("/verifymessage", function(req, res, next) {
+  app.get("/verifymessage", f(req, res, next) => {
     var result = false;
     res.render("verifymessage.ejs", {
       price: res.locals.bitmexPrice.price.last,
@@ -173,7 +173,7 @@ module.exports = (app, passport) => {
   });
 
   // hnadles verify requests
-  app.post("/verifymessage", function(req, res, next) {
+  app.post("/verifymessage", (req, res, next) => {
     var input = req.body;
     btc.verifyMessage(input.address, input.signature, input.message).then(
       result => {
