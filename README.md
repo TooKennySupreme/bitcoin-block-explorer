@@ -1,2 +1,2 @@
-# bitcoin-block-explorer
+## bitcoin-block-explorer
 A local bitcoin block explorer
