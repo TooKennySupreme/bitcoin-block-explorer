@@ -1,4 +1,4 @@
-##Local Bitcoin block explorer
+Local Bitcoin block explorer
 
 Acts as a GUI for interfacing with a Bitcoin Core client.
 
