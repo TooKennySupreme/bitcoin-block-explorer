@@ -5,7 +5,7 @@ module.exports = (app, passport) => {
   var rp = require("request-promise");
   var numeral = require("numeral");
   const BitcoinRpc = require("bitcoin-rpc-promise");
-  let btc = new BitcoinRpc("http://t:e@localhost:8332");
+  let btc = new BitcoinRpc("-");
 
   // gets price for navbar, runs for all http requests
   app.use((req, res, next) => {
