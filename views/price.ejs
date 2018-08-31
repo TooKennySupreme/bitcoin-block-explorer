@@ -1,0 +1,239 @@
+<!-- views/index.ejs -->
+<!doctype html>
+<html>
+
+<head>
+    <title>Markets - Johnny's Bitcoin Block Explorer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!-- load bootstrap css -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <!-- load fontawesome -->
+
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.css">
+
+
+
+    <style>
+    </style>
+</head>
+
+
+
+
+
+
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-light" style="background-color: #072A41;">
+        <div class="container w-75">
+            <div class="col-3 whitetextnavbar">
+                <a class="navbar-brand" href="/"><span class="fa fa-bitcoin"></span><b><span class="whitetextnavbar2">lock
+                            Explorer
+                        </span>
+                    </b></a>
+            </div>
+            <div class="col-2 whitetextnavbar">
+                <span class="fa fa-dollar"></span> <a href="/price"><%= priceObject.usd[0].price%></a>
+            </div>
+            <div class="col-2 whitetextnavbar">
+                <span class="fa fa-user"></span> <a href="#"></span> Profile</a>
+            </div>
+            <div class="col-5">
+                <div class="input-group">
+                    <input class="form-control" type="search" placeholder="Search the blockchain" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit"><span class="fa fa-search"></span> </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+
+        <!-- title of main content -->
+        <div class="row mt-4">
+            <div class="mx-auto">
+                <h4 class="mainheader">Bitcoin Markets</h4>
+            </div>
+        </div>
+        <div class="mx-auto" id="maindiv">
+
+
+            <table class="table table-bordered table-striped table-hover table-sm table-dark">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Price</th>
+                        <th scope="col">Exchange</th>
+                        <th scope="col">Change (24H)</th>
+                        <th scope="col">Volume (24H)</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- cad -->
+                    <tr>
+                        <th scope="row"><span class="flag-icon flag-icon-ca"></span> <span class="fa fa-dollar"></span><%= priceObject.cad.price; %>
+                                CAD
+                        </th>
+                        <td>
+                            <%= priceObject.cad.name %>
+                        </td>
+                        <td>
+                            <%= priceObject.cad.change24hr.toFixed(2); %> %
+                        </td>
+                        <td>
+                            <%= priceObject.cad.volume; %> BTC
+                        </td>
+                    </tr>
+
+
+
+                    <!-- usd -->
+                    <% for(var i=0; i<priceObject.usd.length; i++) { %>
+
+                        <tr>
+                            <th scope="row"><span class="flag-icon flag-icon-us"></span> <span class="fa fa-dollar"></span><%= priceObject.usd[i].price; %>
+                                    USD
+                            </th>
+                            <td>
+                                <%= priceObject.usd[i].name %>
+                            </td>
+                            <td>
+                                <%= priceObject.usd[i].change24hr.toFixed(2); %> %
+                            </td>
+                            <td>
+                                <%= priceObject.usd[i].volume; %> BTC
+                            </td>
+                        </tr>
+
+                        <% } %>
+
+
+
+
+                            <!-- cny -->
+                            <% for(var i=0; i<priceObject.cny.length; i++) { %>
+
+                                <tr>
+                                    <th scope="row"><span class="flag-icon flag-icon-cn"></span> <span class="fa fa-cny"></span><%= priceObject.cny[i].price; %>
+                                            CNY
+                                    </th>
+                                    <td>
+                                        <%= priceObject.cny[i].name %>
+                                    </td>
+                                    <td>
+                                        <%= priceObject.cny[i].change24hr.toFixed(2); %> %
+                                    </td>
+                                    <td>
+                                        <%= priceObject.cny[i].volume; %> BTC
+                                    </td>
+                                </tr>
+
+                                <% } %>
+
+
+                                    <!-- jpy -->
+                                    <% for(var i=0; i<priceObject.cny.length; i++) { %>
+
+                                        <tr>
+                                            <th scope="row"><span class="flag-icon flag-icon-jp"></span> <span class="fa fa-jpy"></span><%= priceObject.jpy[i].price;%>
+                                                    JPY
+                                            </th>
+                                            <td>
+                                                <%= priceObject.jpy[i].name %>
+                                            </td>
+                                            <td>
+                                                <%= priceObject.jpy[i].change24hr.toFixed(2); %> %
+                                            </td>
+                                            <td>
+                                                <%= priceObject.jpy[i].volume; %> BTC
+                                            </td>
+                                        </tr>
+
+                                        <% } %>
+
+
+                                            <!-- eur -->
+                                            <% for(var i=0; i<priceObject.cny.length; i++) { %>
+
+                                                <tr>
+                                                    <th scope="row"><span class="flag-icon flag-icon-eu"></span> <span class="fa fa-eur"></span><%= priceObject.eur[i].price; %>
+                                                            EUR
+                                                    </th>
+                                                    <td>
+                                                        <%= priceObject.eur[i].name %>
+                                                    </td>
+                                                    <td>
+                                                        <%= priceObject.eur[i].change24hr.toFixed(2); %> %
+                                                    </td>
+                                                    <td>
+                                                        <%= priceObject.eur[i].volume; %> BTC
+                                                    </td>
+                                                </tr>
+
+                                                <% } %>
+
+
+                                                    <!-- krw -->
+                                                    <tr>
+                                                        <th scope="row"><span class="flag-icon flag-icon-kr"></span> <span
+                                                                class="fa fa-krw"></span><%= priceObject.krw.price; %>
+                                                                KRW
+                                                        </th>
+                                                        <td>
+                                                            <%= priceObject.krw.name %>
+                                                        </td>
+                                                        <td>
+                                                            <%= priceObject.krw.change24hr.toFixed(2); %> %
+                                                        </td>
+                                                        <td>
+                                                            <%= priceObject.krw.volume;%> BTC
+                                                        </td>
+                                                    </tr>
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--- Footer -->
+    <footer class="site-footer page-footer fixed-bottom font-small pt-2">
+        <div class="container-fluid col-7 col-md-3 text-center">
+            <div class="row">
+                <div class="col-4">
+                    <a id="footerHome" href="/">Home</a>
+                </div>
+                <div class="col-4">
+                    <a id="footerSignup" href="/profile">Profile</a>
+                </div>
+                <div class="col-4">
+                    <a id="footerLogin" href="/verifymessage" data-toggle="modal" data-target="#login">Verify</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+</body>
+
+</html>

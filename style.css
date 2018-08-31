@@ -1,0 +1,59 @@
+.fa-bitcoin {
+  color: #ff9900;
+  font-size: 20pt;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color:#ff9900;
+}
+
+body {
+  color: white;
+  background-color: #111619;
+}
+
+/* color of links in navbar */
+.whitetextnavbar > a {
+  color: #dbdbdb !important;
+  font-size: 12pt;
+}
+
+/* explorer text */
+.whitetextnavbar2 {
+  color: #ffffff;
+  font-size: 16pt;
+}
+
+/* search button */
+.btn {
+  background-color: #ff9900;
+  color: black;
+}
+
+/* div with primary page content*/
+#maindiv {
+  background-color: #16222a;
+  width: 80%;
+  padding: 15px 50px 32px;
+}  
+
+/* header of content */
+.mainheader {
+  color: white;
+}
+
+/* footer */
+.site-footer {
+  background-color: #000000;
+  color: #dbdbdb;
+}  
+
+/* title bar of tables */
+  .tableHeader {
+    text-align: center;
+    font-size: 14pt;
+}
+
+
+
+
